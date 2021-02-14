@@ -1,6 +1,7 @@
 package app.healios.test.data.api
 
 import androidx.annotation.MainThread
+import androidx.annotation.UiThread
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
@@ -39,7 +40,7 @@ abstract class NetworkBoundResource<ResultType, RequestType>
         refresh()
     }
 
-    fun refresh(){
+    fun refresh() {
         start()
     }
 
@@ -110,7 +111,8 @@ abstract class NetworkBoundResource<ResultType, RequestType>
     @MainThread
     protected abstract fun createCall(): LiveData<ApiResponse<RequestType>>
 
-    private fun start(){
+    @UiThread
+    private fun start() {
         result.value = Resource.loading()
         @Suppress("LeakingThis")
         val dbSource = loadFromDb()

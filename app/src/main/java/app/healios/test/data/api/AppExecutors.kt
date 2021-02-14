@@ -2,6 +2,8 @@ package app.healios.test.data.api
 
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
+import app.healios.test.shared.Loggable
 import java.util.concurrent.Executor
 import java.util.concurrent.Executors
 import javax.inject.Inject
