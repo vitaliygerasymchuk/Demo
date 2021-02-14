@@ -60,6 +60,7 @@ sealed class ApiResponse<T> {
  */
 class ApiEmptyResponse<T> : ApiResponse<T>()
 
+@Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 data class ApiSuccessResponse<T>(
     val body: T,
     val links: Map<String, String>
@@ -69,6 +70,7 @@ data class ApiSuccessResponse<T>(
         links = linkHeader?.extractLinks() ?: emptyMap()
     )
 
+    @Suppress("unused")
     val nextPage: Int? by lazy(LazyThreadSafetyMode.NONE) {
         links[NEXT_LINK]?.let { next ->
             val matcher = PAGE_PATTERN.matcher(next)

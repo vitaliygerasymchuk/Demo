@@ -13,6 +13,7 @@ private const val DB_VERSION = 1
 
 @Database(
     version = DB_VERSION,
+    exportSchema = false,
     entities = [
         User::class,
         Post::class,

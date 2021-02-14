@@ -2,7 +2,7 @@ package app.healios.test.ui.posts.list
 
 import android.app.Application
 import app.healios.test.abs.AbsAndroidDaggerViewModel
-import app.healios.test.data.repository.PostsRepository
+import app.healios.test.data.repository.impl.PostsRepositoryImpl
 import app.healios.test.shared.Loggable
 import javax.inject.Inject
 
@@ -14,7 +14,7 @@ class PostListViewModel(application: Application) : AbsAndroidDaggerViewModel(ap
     }
 
     @Inject
-    lateinit var postsRepository: PostsRepository
+    lateinit var postsRepository: PostsRepositoryImpl
 
     val posts = postsRepository.getPosts()
 

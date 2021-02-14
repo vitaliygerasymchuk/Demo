@@ -24,7 +24,3 @@ interface Api {
         const val BAS_URL = "http://jsonplaceholder.typicode.com"
     }
 }
-
-fun <T> ApiResponse<T>.toLiveData() {
-
-}

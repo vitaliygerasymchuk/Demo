@@ -7,8 +7,8 @@ import app.healios.test.data.api.Resource
 import app.healios.test.data.model.Comment
 import app.healios.test.data.model.Post
 import app.healios.test.data.model.User
-import app.healios.test.data.repository.CommentsRepository
-import app.healios.test.data.repository.UsersRepository
+import app.healios.test.data.repository.impl.CommentsRepositoryImpl
+import app.healios.test.data.repository.impl.UsersRepositoryImpl
 import javax.inject.Inject
 
 class PostDetailsViewModel(application: Application) : AbsAndroidDaggerViewModel(application) {
@@ -18,15 +18,15 @@ class PostDetailsViewModel(application: Application) : AbsAndroidDaggerViewModel
     }
 
     @Inject
-    lateinit var usersRepository: UsersRepository
+    lateinit var usersRepository: UsersRepositoryImpl
 
     @Inject
-    lateinit var commentsRepository: CommentsRepository
+    lateinit var commentsRepository: CommentsRepositoryImpl
 
     var post: Post? = null
 
     fun getUser(): LiveData<Resource<User?>> {
-        return usersRepository.getUser(post?.userId ?: 0)
+        return usersRepository.getUserById(post?.userId ?: 0)
     }
 
     fun getComments():LiveData<Resource<List<Comment>>>{
