@@ -9,6 +9,8 @@
     app:cardUseCompatPadding="true"
     app:contentPadding="@dimen/dp_16">
 
-    <include layout="@layout/post" />
+    <include
+        android:id="@+id/post"
+        layout="@layout/post" />
 
 </com.google.android.material.card.MaterialCardView>

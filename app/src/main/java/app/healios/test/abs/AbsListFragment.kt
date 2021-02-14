@@ -1,19 +1,29 @@
 package app.healios.test.abs
 
+import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import android.widget.ProgressBar
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.list.*
-import kotlinx.android.synthetic.main.list.view.*
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import app.healios.test.R
 
 abstract class AbsListFragment<A : RecyclerView.Adapter<out RecyclerView.ViewHolder>> :
     AbsDaggerFragment() {
 
     protected lateinit var adapter: A
-
     protected abstract fun initAdapter(): A
+
+    private var swipeRefreshLayout: SwipeRefreshLayout? = null
+    private var progressBar: ProgressBar? = null
+
+    protected open fun getListLayout(): Int {
+        return R.layout.list
+    }
 
     protected open fun initLayoutManger(): RecyclerView.LayoutManager {
         return LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
@@ -23,16 +33,25 @@ abstract class AbsListFragment<A : RecyclerView.Adapter<out RecyclerView.ViewHol
         return DividerItemDecoration(requireContext(), LinearLayoutManager.VERTICAL)
     }
 
-    override fun onInflated(view: View) {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view = inflater.inflate(getListLayout(), container, false)
         adapter = initAdapter()
-        view.recycler_view.layoutManager = initLayoutManger()
-        view.recycler_view.adapter = adapter
+        val recyclerView = view.findViewById<RecyclerView>(R.id.recycler_view)
+        swipeRefreshLayout = view.findViewById(R.id.swipe_refresh_layout)
+        progressBar = view.findViewById(R.id.progress)
+        recyclerView.layoutManager = initLayoutManger()
+        recyclerView.adapter = adapter
         initItemDecoration()?.let {
-            view.recycler_view.addItemDecoration(it)
+            recyclerView.addItemDecoration(it)
         }
-        view.swipe_refresh_layout.setOnRefreshListener {
+        swipeRefreshLayout?.setOnRefreshListener {
             onRefresh()
         }
+        return view
     }
 
     protected open fun onRefresh() {
@@ -40,9 +59,9 @@ abstract class AbsListFragment<A : RecyclerView.Adapter<out RecyclerView.ViewHol
     }
 
     protected fun setIsLoading(isLoading: Boolean) {
-        view?.progress?.isVisible = isLoading
-        if (view?.swipe_refresh_layout?.isRefreshing == true) {
-            view?.swipe_refresh_layout?.isRefreshing = isLoading
+        progressBar?.isVisible = isLoading
+        if (swipeRefreshLayout?.isRefreshing == true) {
+            swipeRefreshLayout?.isRefreshing = isLoading
         }
     }
 }

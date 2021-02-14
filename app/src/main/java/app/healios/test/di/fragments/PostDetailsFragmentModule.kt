@@ -1,4 +1,4 @@
-package app.healios.test.di.posts
+package app.healios.test.di.fragments
 
 import app.healios.test.ui.posts.details.PostDetailsFragment
 import dagger.Binds

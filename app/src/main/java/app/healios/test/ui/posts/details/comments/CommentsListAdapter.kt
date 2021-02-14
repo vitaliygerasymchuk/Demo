@@ -1,11 +1,12 @@
 package app.healios.test.ui.posts.details.comments
 
-import android.view.View
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import app.healios.test.R
 import app.healios.test.abs.AbsAdvancedListAdapter
 import app.healios.test.data.model.Comment
-import kotlinx.android.synthetic.main.item_comment.view.*
+import app.healios.test.databinding.ItemCommentBinding
 
 class CommentsListAdapter : AbsAdvancedListAdapter<Comment>() {
 
@@ -17,11 +18,19 @@ class CommentsListAdapter : AbsAdvancedListAdapter<Comment>() {
         }
     }
 
-    override fun getViewHolder(view: View, viewType: Int): RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         if (viewType != VT_LOADING) {
-            return CommentViewHolder(view)
+            return CommentViewHolder(
+                ItemCommentBinding.inflate(
+                    LayoutInflater.from(
+                        parent.context
+                    ),
+                    parent,
+                    false
+                )
+            )
         }
-        return super.getViewHolder(view, viewType)
+        return super.onCreateViewHolder(parent, viewType)
     }
 
     override fun onBind(holder: RecyclerView.ViewHolder, item: Comment) {
@@ -30,11 +39,12 @@ class CommentsListAdapter : AbsAdvancedListAdapter<Comment>() {
         }
     }
 
-    inner class CommentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class CommentViewHolder(private val binding: ItemCommentBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(it: Comment) {
-            itemView.name.text = it.name
-            itemView.comment_body.text = it.body
-            itemView.email.text = it.email
+            binding.name.text = it.name
+            binding.commentBody.text = it.body
+            binding.email.text = it.email
         }
     }
 }

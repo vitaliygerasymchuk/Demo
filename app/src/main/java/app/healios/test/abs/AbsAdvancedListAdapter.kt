@@ -1,9 +1,10 @@
 package app.healios.test.abs
 
-import android.view.View
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import app.healios.test.R
-
+import app.healios.test.databinding.ItemLoadingBinding
 
 abstract class AbsAdvancedListAdapter<T> : AbsSimpleListAdapter<T, RecyclerView.ViewHolder>() {
 
@@ -37,8 +38,18 @@ abstract class AbsAdvancedListAdapter<T> : AbsSimpleListAdapter<T, RecyclerView.
         }
     }
 
-    override fun getViewHolder(view: View, viewType: Int): RecyclerView.ViewHolder {
-        return object : RecyclerView.ViewHolder(view) {}
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return if (viewType == VT_LOADING) {
+            object : RecyclerView.ViewHolder(
+                ItemLoadingBinding.inflate(
+                    LayoutInflater.from(parent.context),
+                    parent,
+                    false
+                ).root
+            ) {}
+        }else{
+            super.createViewHolder(parent, viewType)
+        }
     }
 
     companion object {

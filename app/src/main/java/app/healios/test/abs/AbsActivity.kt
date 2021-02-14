@@ -3,13 +3,11 @@ package app.healios.test.abs
 import android.os.Bundle
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
+import androidx.appcompat.widget.Toolbar
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import app.healios.test.R
-import kotlinx.android.synthetic.main.activity_main.view.*
-import kotlinx.android.synthetic.main.toolbar.*
 
 abstract class AbsActivity : AppCompatActivity() {
     @LayoutRes
@@ -27,6 +25,6 @@ abstract class AbsActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
         val appbarConfig = AppBarConfiguration(navController.graph)
-        toolbar.setupWithNavController(navController, appbarConfig)
+        findViewById<Toolbar>(R.id.toolbar).setupWithNavController(navController, appbarConfig)
     }
 }

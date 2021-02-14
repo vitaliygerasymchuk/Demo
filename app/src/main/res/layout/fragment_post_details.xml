@@ -97,6 +97,7 @@
             <include layout="@layout/divider_black" />
 
             <include
+                android:id="@+id/post"
                 layout="@layout/post"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

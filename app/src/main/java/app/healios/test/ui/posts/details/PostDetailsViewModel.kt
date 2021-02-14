@@ -7,6 +7,8 @@ import app.healios.test.data.api.Resource
 import app.healios.test.data.model.Comment
 import app.healios.test.data.model.Post
 import app.healios.test.data.model.User
+import app.healios.test.data.repository.CommentsRepository
+import app.healios.test.data.repository.UsersRepository
 import app.healios.test.data.repository.impl.CommentsRepositoryImpl
 import app.healios.test.data.repository.impl.UsersRepositoryImpl
 import javax.inject.Inject
@@ -18,10 +20,10 @@ class PostDetailsViewModel(application: Application) : AbsAndroidDaggerViewModel
     }
 
     @Inject
-    lateinit var usersRepository: UsersRepositoryImpl
+    lateinit var usersRepository: UsersRepository
 
     @Inject
-    lateinit var commentsRepository: CommentsRepositoryImpl
+    lateinit var commentsRepository: CommentsRepository
 
     var post: Post? = null
 

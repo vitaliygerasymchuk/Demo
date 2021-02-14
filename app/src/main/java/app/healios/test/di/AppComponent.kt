@@ -1,10 +1,9 @@
 package app.healios.test.di
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import app.healios.test.App
-import app.healios.test.di.posts.PostDetailsFragmentModule
-import app.healios.test.di.posts.PostListFragmentModule
+import app.healios.test.di.fragments.PostDetailsFragmentModule
+import app.healios.test.di.fragments.PostListFragmentModule
 import app.healios.test.ui.posts.details.PostDetailsViewModel
 import app.healios.test.ui.posts.list.PostListViewModel
 import dagger.BindsInstance
@@ -20,6 +19,7 @@ import javax.inject.Singleton
         AppModule::class,
         RetrofitModule::class,
         CacheModule::class,
+        RepoModule::class,
         PostListFragmentModule::class,
         PostDetailsFragmentModule::class
     ]

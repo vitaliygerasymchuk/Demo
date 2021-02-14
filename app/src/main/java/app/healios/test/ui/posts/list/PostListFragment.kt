@@ -1,12 +1,14 @@
 package app.healios.test.ui.posts.list
 
 import android.content.res.Configuration.ORIENTATION_LANDSCAPE
+import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import app.healios.test.R
 import app.healios.test.abs.AbsListFragment
 import app.healios.test.abs.SimpleItemClickListener
 import app.healios.test.data.api.Resource
@@ -15,10 +17,6 @@ import app.healios.test.data.model.Post
 class PostListFragment : AbsListFragment<PostListAdapter>() {
 
     private val viewModel by viewModels<PostListViewModel>()
-
-    override fun getLayout(): Int {
-        return R.layout.list
-    }
 
     override fun initItemDecoration(): RecyclerView.ItemDecoration? {
         return null
@@ -44,14 +42,19 @@ class PostListFragment : AbsListFragment<PostListAdapter>() {
         })
     }
 
-    override fun onInflated(view: View) {
-        super.onInflated(view)
-        viewModel.posts.observe(this, { it ->
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view = super.onCreateView(inflater, container, savedInstanceState)
+        viewModel.posts.observe(viewLifecycleOwner, { it ->
             setIsLoading(it is Resource.Loading)
             it?.data?.let {
                 adapter.refresh(it)
             }
         })
+        return view
     }
 
     override fun onRefresh() {
