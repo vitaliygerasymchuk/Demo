@@ -3,20 +3,11 @@ package app.healios.test.ui.posts.details.comments
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import app.healios.test.R
-import app.healios.test.ui.abs.AbsAdvancedListAdapter
 import app.healios.test.data.model.Comment
 import app.healios.test.databinding.ItemCommentBinding
+import app.healios.test.ui.abs.AbsAdvancedListAdapter
 
 class CommentsListAdapter : AbsAdvancedListAdapter<Comment>() {
-
-    override fun getViewHolderLayout(viewType: Int): Int {
-        return if (viewType != VT_LOADING) {
-            R.layout.item_comment
-        } else {
-            super.getViewHolderLayout(viewType)
-        }
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         if (viewType != VT_LOADING) {

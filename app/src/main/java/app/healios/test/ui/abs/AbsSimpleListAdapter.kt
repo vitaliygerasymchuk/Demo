@@ -13,8 +13,6 @@ abstract class AbsSimpleListAdapter<T, VH : RecyclerView.ViewHolder> : RecyclerV
 
     val items = arrayListOf<T>()
 
-    @LayoutRes
-    protected abstract fun getViewHolderLayout(viewType: Int): Int
     protected abstract fun onBind(holder: VH, item: T)
 
     open fun refresh(it: List<T>) {

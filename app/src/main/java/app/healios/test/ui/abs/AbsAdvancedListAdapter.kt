@@ -30,14 +30,6 @@ abstract class AbsAdvancedListAdapter<T> : AbsSimpleListAdapter<T, RecyclerView.
         return if (isLoading) VT_LOADING else super.getItemViewType(position)
     }
 
-    override fun getViewHolderLayout(viewType: Int): Int {
-        return if (viewType == VT_LOADING) {
-            R.layout.item_loading
-        } else {
-            super.getItemViewType(viewType)
-        }
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return if (viewType == VT_LOADING) {
             object : RecyclerView.ViewHolder(
