@@ -4,8 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import app.healios.test.R
-import app.healios.test.abs.AbsSimpleListAdapter
-import app.healios.test.abs.SimpleItemClickListener
+import app.healios.test.ui.abs.AbsSimpleListAdapter
+import app.healios.test.ui.abs.SimpleItemClickListener
 import app.healios.test.data.model.Post
 import app.healios.test.databinding.ItemPostBinding
 

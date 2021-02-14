@@ -1,7 +1,7 @@
 package app.healios.test.ui.posts.list
 
 import android.app.Application
-import app.healios.test.abs.AbsAndroidDaggerViewModel
+import app.healios.test.ui.abs.AbsAndroidDaggerViewModel
 import app.healios.test.data.repository.impl.PostsRepositoryImpl
 import app.healios.test.shared.Loggable
 import javax.inject.Inject

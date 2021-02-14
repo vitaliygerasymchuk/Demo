@@ -8,7 +8,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import app.healios.test.abs.AbsDaggerFragment
+import app.healios.test.ui.abs.AbsDaggerFragment
 import app.healios.test.data.api.Resource
 import app.healios.test.data.model.Comment
 import app.healios.test.data.model.Post

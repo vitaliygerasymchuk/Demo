@@ -1,4 +1,4 @@
-package app.healios.test.abs
+package app.healios.test.ui.abs
 
 import androidx.viewbinding.ViewBinding
 import app.healios.test.shared.Loggable

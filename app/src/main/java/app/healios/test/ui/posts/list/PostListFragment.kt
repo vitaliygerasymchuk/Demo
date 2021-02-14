@@ -9,8 +9,8 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import app.healios.test.abs.AbsListFragment
-import app.healios.test.abs.SimpleItemClickListener
+import app.healios.test.ui.abs.AbsListFragment
+import app.healios.test.ui.abs.SimpleItemClickListener
 import app.healios.test.data.api.Resource
 import app.healios.test.data.model.Post
 

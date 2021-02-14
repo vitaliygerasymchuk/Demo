@@ -1,4 +1,4 @@
-package app.healios.test.abs
+package app.healios.test.ui.abs
 
 import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.RecyclerView

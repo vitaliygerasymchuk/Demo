@@ -1,4 +1,4 @@
-package app.healios.test.abs
+package app.healios.test.ui.abs
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

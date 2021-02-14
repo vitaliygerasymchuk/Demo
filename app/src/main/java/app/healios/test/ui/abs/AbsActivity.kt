@@ -1,7 +1,7 @@
-package app.healios.test.abs
+package app.healios.test.ui.abs
 
 import android.os.Bundle
-import androidx.annotation.LayoutRes
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.fragment.NavHostFragment
@@ -10,9 +10,9 @@ import androidx.navigation.ui.setupWithNavController
 import app.healios.test.R
 
 abstract class AbsActivity : AppCompatActivity() {
-    @LayoutRes
-    abstract fun getLayout(): Int
-    abstract fun onInflated()
+
+    abstract fun getLayout(): View
+    protected open fun onInflated() {}
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(getLayout())

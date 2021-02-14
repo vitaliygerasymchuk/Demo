@@ -1,15 +1,15 @@
 package app.healios.test.ui
 
-import app.healios.test.R
-import app.healios.test.abs.AbsActivity
+import android.view.View
+import app.healios.test.ui.abs.AbsActivity
+import app.healios.test.databinding.ActivityMainBinding
 
 class MainActivity : AbsActivity() {
 
-    override fun getLayout(): Int {
-        return R.layout.activity_main
-    }
+    private lateinit var binding: ActivityMainBinding
 
-    override fun onInflated() {
-
+    override fun getLayout(): View {
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        return binding.root
     }
 }

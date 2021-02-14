@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import app.healios.test.R
-import app.healios.test.abs.AbsAdvancedListAdapter
+import app.healios.test.ui.abs.AbsAdvancedListAdapter
 import app.healios.test.data.model.Comment
 import app.healios.test.databinding.ItemCommentBinding
 

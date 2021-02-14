@@ -2,7 +2,7 @@ package app.healios.test.ui.posts.details
 
 import android.app.Application
 import androidx.lifecycle.LiveData
-import app.healios.test.abs.AbsAndroidDaggerViewModel
+import app.healios.test.ui.abs.AbsAndroidDaggerViewModel
 import app.healios.test.data.api.Resource
 import app.healios.test.data.model.Comment
 import app.healios.test.data.model.Post
