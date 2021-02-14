@@ -9,8 +9,6 @@ import app.healios.test.data.model.Post
 import app.healios.test.data.model.User
 import app.healios.test.data.repository.CommentsRepository
 import app.healios.test.data.repository.UsersRepository
-import app.healios.test.data.repository.impl.CommentsRepositoryImpl
-import app.healios.test.data.repository.impl.UsersRepositoryImpl
 import javax.inject.Inject
 
 class PostDetailsViewModel(application: Application) : AbsAndroidDaggerViewModel(application) {
